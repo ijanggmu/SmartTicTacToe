@@ -21,12 +21,12 @@ namespace SmartTicTacToe
         public PlayersNameForm(string bot)
         {
             InitializeComponent();
-            if (bot == (BotEnum.Bot.RandomBot).ToString())
+            if (bot == (Bot.RandomBot).ToString())
             {
                 playerTwoTextBox.Text = "RandomBot";
                 playerTwoTextBox.Enabled = false;
             }
-            else if (bot == BotEnum.Bot.GuidedBot.ToString())
+            else if (bot ==Bot.GuidedBot.ToString())
             {
                 playerTwoTextBox.Text = "GuidedBot";
                 playerTwoTextBox.Enabled = false;
@@ -40,16 +40,21 @@ namespace SmartTicTacToe
             {
                 MessageBox.Show("Player Name Cannot be Empty");
             }
-            else if (!(String.IsNullOrEmpty(playerOneTextBox.Text)) && playerTwoTextBox.Text == BotEnum.Bot.GuidedBot.ToString())
+            else if (!(String.IsNullOrEmpty(playerOneTextBox.Text)) && playerTwoTextBox.Text == Bot.GuidedBot.ToString())
             {
                 TicTacToeMainGameForm.setPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
-                TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm(BotEnum.Bot.GuidedBot.ToString());
-                mainGame.Show();
+                TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm();
+                TicTacToeMainGameForm.setOpponentChoice(playerTwoTextBox.Text);
+                mainGame.ShowDialog();
+                this.Close();
             }
-            else if (!(String.IsNullOrEmpty(playerOneTextBox.Text)) && playerTwoTextBox.Text == BotEnum.Bot.RandomBot.ToString())
+            else if (!(String.IsNullOrEmpty(playerOneTextBox.Text)) && playerTwoTextBox.Text == Bot.RandomBot.ToString())
             {
                 TicTacToeMainGameForm.setPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
-                TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm(BotEnum.Bot.GuidedBot.ToString());
+                TicTacToeMainGameForm.setOpponentChoice(playerTwoTextBox.Text);
+                TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm();
+                mainGame.ShowDialog();
+                this.Close();
             }
             else
             {

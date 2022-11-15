@@ -66,7 +66,8 @@
     <Compile Include="Forms\TicTacToeStartPage.Designer.cs">
       <DependentUpon>TicTacToeStartPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\BotEnum.cs" />
+    <Compile Include="Utility\Enum\BotEnum.cs" />
+    <Compile Include="Utility\Enum\Player.cs" />
     <EmbeddedResource Include="Forms\PlayersNameForm.resx">
       <DependentUpon>PlayersNameForm.cs</DependentUpon>
     </EmbeddedResource>

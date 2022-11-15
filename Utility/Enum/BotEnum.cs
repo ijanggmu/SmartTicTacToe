@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace SmartTicTacToe.Utility
 {
-    public class BotEnum
-    {
         public enum Bot
         {
             GuidedBot,
             RandomBot
 
         }
-    }
 }

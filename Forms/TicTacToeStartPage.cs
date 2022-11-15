@@ -27,7 +27,7 @@ namespace SmartTicTacToe
 
         private void RandomBot_Click(object sender, EventArgs e)
         {
-            PlayersNameForm playerName = new PlayersNameForm((BotEnum.Bot.RandomBot).ToString());
+            PlayersNameForm playerName = new PlayersNameForm((Bot.RandomBot).ToString());
             playerName.ShowDialog();
 
 
@@ -35,7 +35,7 @@ namespace SmartTicTacToe
 
         private void GuidedBot_Click(object sender, EventArgs e)
         {
-            PlayersNameForm playerName = new PlayersNameForm((BotEnum.Bot.GuidedBot).ToString());
+            PlayersNameForm playerName = new PlayersNameForm((Bot.GuidedBot).ToString());
             playerName.ShowDialog();
 
         }

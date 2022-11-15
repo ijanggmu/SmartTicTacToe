@@ -1,4 +1,6 @@
 ﻿using SmartTicTacToe;
+using SmartTicTacToe.Utility;
+using SmartTicTacToe.Utility.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +18,12 @@ namespace TikTacToe
         bool turn = true; //true = x turn; false = y turn;
         int turnCount = 0;
         static string Player1, Player2;
+        static bool againstRandomBot = false;
+        static bool againstGuidedbot = false;
         List<Button> emptyButton = new List<Button>();
-
+        public Player currentPlayer { get; set; }
 
         public TicTacToeMainGameForm()
-        {
-            InitializeComponent();
-        }
-        public TicTacToeMainGameForm(string bot)
         {
             InitializeComponent();
         }
@@ -31,11 +31,23 @@ namespace TikTacToe
         {
             Player1 = p1;
             Player2 = p2;
+        } 
+        public static void setOpponentChoice(string opponent)
+        {
+            if (opponent == Bot.GuidedBot.ToString())
+            {
+                againstGuidedbot = true;
+            }
+            else if (opponent == Bot.RandomBot.ToString())
+            {
+                againstRandomBot = true;
+            }
         }
         private void TikTacToe_Load(object sender, EventArgs e)
         {
             label1.Text = Player1;
             label3.Text = Player2;
+            
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,22 +65,28 @@ namespace TikTacToe
             Button button = (Button)sender;
             if (turn)
             {
-                button.Text = "X";
+                button.Text = Player.X.ToString();
             }
             else
             {
-                button.Text = "O";
+                button.Text = Player.O.ToString();
                 
             }
 
             turn = !turn;
-            button.Enabled = false;
-
-           
+            button.Enabled = false;           
             turnCount = turnCount + 1;
-
             WinCheck();
+            if((!turn) && (againstRandomBot))
+            {
+                ticTacToeRandomBot();
+            }
+            else if ((!turn) && (againstGuidedbot))
+            {
+                ticTacToeGuidedBot();
+            }
         }
+       
 
         private void WinCheck()
         {
@@ -112,7 +130,7 @@ namespace TikTacToe
                     winner_is = Player1;
                     Human.Text = (Int32.Parse(Human.Text) + 1).ToString();
                 }
-                MessageBox.Show("Yay! " + winner_is + "wins!");
+                MessageBox.Show($"Yay!  {winner_is}  wins!");
                 newGameAfterMatchEnd();
             }
             if (turnCount == 9)
@@ -120,10 +138,13 @@ namespace TikTacToe
                 Draw.Text = (Int32.Parse(Draw.Text) + 1).ToString();
                 MessageBox.Show("Draw!!");
                 newGameAfterMatchEnd();
-
             }
 
 
+        }
+        private void SwitchPlayer()
+        {
+            currentPlayer = currentPlayer == Player.X ? Player.O : Player.X;
         }
         private void disableButton()
         {
@@ -226,7 +247,7 @@ namespace TikTacToe
             
             
         }
-        #endregion Bot
+        
         //private bool isSpaceEmptyChecker()
         //{
         //    string[] emptyCell = new string[9];
@@ -260,7 +281,8 @@ namespace TikTacToe
             if((A1.Text==mark) && (A2.Text=="") && (A3.Text == mark))
             {
                 return A2;
-            }if((A1.Text=="") && (A2.Text==mark) && (A3.Text == mark))
+            }
+            if((A1.Text=="") && (A2.Text==mark) && (A3.Text == mark))
             {
                 return A1;
             }
@@ -508,6 +530,7 @@ namespace TikTacToe
             return emptyButton[result];
         }
         #endregion BotLogic
+        #endregion Bot
 
         private void buttonEnter(object sender, EventArgs e)
         {
