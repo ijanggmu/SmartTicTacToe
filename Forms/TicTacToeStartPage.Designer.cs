@@ -54,7 +54,7 @@
             this.twoPlayer.Size = new System.Drawing.Size(212, 28);
             this.twoPlayer.TabIndex = 1;
             this.twoPlayer.Text = "- Player VS Player";
-            this.twoPlayer.Click += new System.EventHandler(this.twoPlayer_Click);
+            this.twoPlayer.Click += new System.EventHandler(this.TwoPlayerClick);
             // 
             // RandomBot
             // 
@@ -65,7 +65,7 @@
             this.RandomBot.Size = new System.Drawing.Size(278, 28);
             this.RandomBot.TabIndex = 2;
             this.RandomBot.Text = "- Player VS Random Bot";
-            this.RandomBot.Click += new System.EventHandler(this.RandomBot_Click);
+            this.RandomBot.Click += new System.EventHandler(this.RandomBotClick);
             // 
             // GuidedBot
             // 
@@ -76,7 +76,7 @@
             this.GuidedBot.Size = new System.Drawing.Size(334, 28);
             this.GuidedBot.TabIndex = 3;
             this.GuidedBot.Text = "- Player VS Guided Logic Bot";
-            this.GuidedBot.Click += new System.EventHandler(this.GuidedBot_Click);
+            this.GuidedBot.Click += new System.EventHandler(this.GuidedBotClick);
             // 
             // label2
             // 
@@ -101,7 +101,6 @@
             this.Name = "TicTacToeStartPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TicTacToeStartPage";
-            this.Load += new System.EventHandler(this.TicTacToeStartPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

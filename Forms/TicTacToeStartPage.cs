@@ -1,14 +1,6 @@
 ﻿using SmartTicTacToe.Utility;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TikTacToe;
 
 namespace SmartTicTacToe
 {
@@ -19,13 +11,13 @@ namespace SmartTicTacToe
             InitializeComponent();
         }
 
-        private void twoPlayer_Click(object sender, EventArgs e)
+        private void TwoPlayerClick(object sender, EventArgs e)
         {
             PlayersNameForm playerName = new PlayersNameForm();
             playerName.ShowDialog();
         }
 
-        private void RandomBot_Click(object sender, EventArgs e)
+        private void RandomBotClick(object sender, EventArgs e)
         {
             PlayersNameForm playerName = new PlayersNameForm((Bot.RandomBot).ToString());
             playerName.ShowDialog();
@@ -33,16 +25,12 @@ namespace SmartTicTacToe
 
         }
 
-        private void GuidedBot_Click(object sender, EventArgs e)
+        private void GuidedBotClick(object sender, EventArgs e)
         {
             PlayersNameForm playerName = new PlayersNameForm((Bot.GuidedBot).ToString());
             playerName.ShowDialog();
 
         }
 
-        private void TicTacToeStartPage_Load(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

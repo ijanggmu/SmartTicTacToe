@@ -59,14 +59,14 @@
             // 
             this.playerOneTextBox.Location = new System.Drawing.Point(139, 49);
             this.playerOneTextBox.Name = "playerOneTextBox";
-            this.playerOneTextBox.Size = new System.Drawing.Size(185, 22);
+            this.playerOneTextBox.Size = new System.Drawing.Size(179, 22);
             this.playerOneTextBox.TabIndex = 2;
             // 
             // playerTwoTextBox
             // 
             this.playerTwoTextBox.Location = new System.Drawing.Point(139, 95);
             this.playerTwoTextBox.Name = "playerTwoTextBox";
-            this.playerTwoTextBox.Size = new System.Drawing.Size(185, 22);
+            this.playerTwoTextBox.Size = new System.Drawing.Size(179, 22);
             this.playerTwoTextBox.TabIndex = 3;
             // 
             // playTwoPlayer
@@ -92,7 +92,6 @@
             this.Name = "PlayersNameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlayesNameForm";
-            this.Load += new System.EventHandler(this.PlayersNameForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

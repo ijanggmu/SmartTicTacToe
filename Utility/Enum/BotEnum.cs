@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SmartTicTacToe.Utility
+﻿namespace SmartTicTacToe.Utility
 {
-        public enum Bot
+    // bot types
+    public enum Bot
         {
             GuidedBot,
-            RandomBot
+            RandomBot // random number generator
 
         }
 }

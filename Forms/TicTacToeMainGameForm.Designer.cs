@@ -1,4 +1,4 @@
-﻿namespace TikTacToe
+﻿namespace SmartTicTacToe
 {
     partial class TicTacToeMainGameForm
     {
@@ -30,9 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tikTacToeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGameMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.resetScore = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitApplicationMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.A1 = new System.Windows.Forms.Button();
@@ -68,34 +68,33 @@
             // tikTacToeToolStripMenuItem
             // 
             this.tikTacToeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newGameToolStripMenuItem,
+            this.newGameMenu,
             this.resetScore,
-            this.exitApplicationToolStripMenuItem});
+            this.exitApplicationMenu});
             this.tikTacToeToolStripMenuItem.Name = "ticTacToeToolStripMenuItem";
             this.tikTacToeToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
             this.tikTacToeToolStripMenuItem.Text = "TicTacToe";
-            this.tikTacToeToolStripMenuItem.Click += new System.EventHandler(this.ticTacToeToolStripMenuItem_Click);
             // 
-            // newGameToolStripMenuItem
+            // newGameMenu
             // 
-            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.newGameToolStripMenuItem.Text = "New Game";
-            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
+            this.newGameMenu.Name = "newGameMenu";
+            this.newGameMenu.Size = new System.Drawing.Size(169, 26);
+            this.newGameMenu.Text = "New Game";
+            this.newGameMenu.Click += new System.EventHandler(this.NewGameMenuClick);
             // 
             // resetScore
             // 
             this.resetScore.Name = "resetScore";
             this.resetScore.Size = new System.Drawing.Size(169, 26);
             this.resetScore.Text = "Reset Score";
-            this.resetScore.Click += new System.EventHandler(this.resetScore_Click);
+            this.resetScore.Click += new System.EventHandler(this.ResetScoreClick);
             // 
-            // exitApplicationToolStripMenuItem
+            // exitApplicationMenu
             // 
-            this.exitApplicationToolStripMenuItem.Name = "exitApplicationToolStripMenuItem";
-            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.exitApplicationToolStripMenuItem.Text = "Exit";
-            this.exitApplicationToolStripMenuItem.Click += new System.EventHandler(this.exitApplicationToolStripMenuItem_Click);
+            this.exitApplicationMenu.Name = "exitApplicationMenu";
+            this.exitApplicationMenu.Size = new System.Drawing.Size(169, 26);
+            this.exitApplicationMenu.Text = "Exit";
+            this.exitApplicationMenu.Click += new System.EventHandler(this.ExitApplicationMenuClick);
             // 
             // helpToolStripMenuItem
             // 
@@ -110,7 +109,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
             // A1
             // 
@@ -121,9 +120,9 @@
             this.A1.Size = new System.Drawing.Size(100, 92);
             this.A1.TabIndex = 8;
             this.A1.UseVisualStyleBackColor = true;
-            this.A1.Click += new System.EventHandler(this.button_click);
-            this.A1.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.A1.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.A1.Click += new System.EventHandler(this.ButtonClick);
+            this.A1.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.A1.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // A2
             // 
@@ -134,9 +133,9 @@
             this.A2.Size = new System.Drawing.Size(100, 92);
             this.A2.TabIndex = 9;
             this.A2.UseVisualStyleBackColor = true;
-            this.A2.Click += new System.EventHandler(this.button_click);
-            this.A2.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.A2.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.A2.Click += new System.EventHandler(this.ButtonClick);
+            this.A2.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.A2.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // A3
             // 
@@ -147,9 +146,9 @@
             this.A3.Size = new System.Drawing.Size(100, 92);
             this.A3.TabIndex = 10;
             this.A3.UseVisualStyleBackColor = true;
-            this.A3.Click += new System.EventHandler(this.button_click);
-            this.A3.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.A3.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.A3.Click += new System.EventHandler(this.ButtonClick);
+            this.A3.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.A3.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // B1
             // 
@@ -160,9 +159,9 @@
             this.B1.Size = new System.Drawing.Size(100, 92);
             this.B1.TabIndex = 11;
             this.B1.UseVisualStyleBackColor = true;
-            this.B1.Click += new System.EventHandler(this.button_click);
-            this.B1.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.B1.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.B1.Click += new System.EventHandler(this.ButtonClick);
+            this.B1.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.B1.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // B2
             // 
@@ -173,9 +172,9 @@
             this.B2.Size = new System.Drawing.Size(100, 92);
             this.B2.TabIndex = 12;
             this.B2.UseVisualStyleBackColor = true;
-            this.B2.Click += new System.EventHandler(this.button_click);
-            this.B2.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.B2.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.B2.Click += new System.EventHandler(this.ButtonClick);
+            this.B2.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.B2.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // B3
             // 
@@ -186,9 +185,9 @@
             this.B3.Size = new System.Drawing.Size(100, 92);
             this.B3.TabIndex = 13;
             this.B3.UseVisualStyleBackColor = true;
-            this.B3.Click += new System.EventHandler(this.button_click);
-            this.B3.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.B3.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.B3.Click += new System.EventHandler(this.ButtonClick);
+            this.B3.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.B3.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // C1
             // 
@@ -199,9 +198,9 @@
             this.C1.Size = new System.Drawing.Size(100, 92);
             this.C1.TabIndex = 14;
             this.C1.UseVisualStyleBackColor = true;
-            this.C1.Click += new System.EventHandler(this.button_click);
-            this.C1.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.C1.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.C1.Click += new System.EventHandler(this.ButtonClick);
+            this.C1.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.C1.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // C2
             // 
@@ -212,9 +211,9 @@
             this.C2.Size = new System.Drawing.Size(100, 92);
             this.C2.TabIndex = 15;
             this.C2.UseVisualStyleBackColor = true;
-            this.C2.Click += new System.EventHandler(this.button_click);
-            this.C2.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.C2.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.C2.Click += new System.EventHandler(this.ButtonClick);
+            this.C2.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.C2.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // C3
             // 
@@ -225,9 +224,9 @@
             this.C3.Size = new System.Drawing.Size(100, 92);
             this.C3.TabIndex = 16;
             this.C3.UseVisualStyleBackColor = true;
-            this.C3.Click += new System.EventHandler(this.button_click);
-            this.C3.MouseEnter += new System.EventHandler(this.buttonEnter);
-            this.C3.MouseLeave += new System.EventHandler(this.buttonLeave);
+            this.C3.Click += new System.EventHandler(this.ButtonClick);
+            this.C3.MouseEnter += new System.EventHandler(this.ButtonEnter);
+            this.C3.MouseLeave += new System.EventHandler(this.ButtonLeave);
             // 
             // label1
             // 
@@ -309,7 +308,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TikTacToe";
-            this.Load += new System.EventHandler(this.TikTacToe_Load);
+            this.Load += new System.EventHandler(this.TikTacToeLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -321,8 +320,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tikTacToeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitApplicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newGameMenu;
+        private System.Windows.Forms.ToolStripMenuItem exitApplicationMenu;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         public System.Windows.Forms.Button A1;

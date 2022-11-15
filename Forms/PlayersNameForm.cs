@@ -42,16 +42,16 @@ namespace SmartTicTacToe
             }
             else if (!(String.IsNullOrEmpty(playerOneTextBox.Text)) && playerTwoTextBox.Text == Bot.GuidedBot.ToString())
             {
-                TicTacToeMainGameForm.setPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
+                TicTacToeMainGameForm.SetPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
                 TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm();
-                TicTacToeMainGameForm.setOpponentChoice(playerTwoTextBox.Text);
+                TicTacToeMainGameForm.SetOpponentChoice(playerTwoTextBox.Text);
                 mainGame.ShowDialog();
                 this.Close();
             }
             else if (!(String.IsNullOrEmpty(playerOneTextBox.Text)) && playerTwoTextBox.Text == Bot.RandomBot.ToString())
             {
-                TicTacToeMainGameForm.setPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
-                TicTacToeMainGameForm.setOpponentChoice(playerTwoTextBox.Text);
+                TicTacToeMainGameForm.SetPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
+                TicTacToeMainGameForm.SetOpponentChoice(playerTwoTextBox.Text);
                 TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm();
                 mainGame.ShowDialog();
                 this.Close();
@@ -59,7 +59,7 @@ namespace SmartTicTacToe
             else
             {
 
-                TicTacToeMainGameForm.setPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
+                TicTacToeMainGameForm.SetPlayerName(playerOneTextBox.Text, playerTwoTextBox.Text);
                 TicTacToeMainGameForm mainGame = new TicTacToeMainGameForm();
                 mainGame.ShowDialog();
                 this.Close();
@@ -67,7 +67,7 @@ namespace SmartTicTacToe
             }
         }
 
-        private void PlayersNameForm_Load(object sender, EventArgs e)
+        private void playerTwoFirst_Click(object sender, EventArgs e)
         {
 
         }
