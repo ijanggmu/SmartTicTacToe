@@ -146,67 +146,6 @@ namespace SmartTicTacToe
         }
         private Button moveForCorners()
         {
-            if (A1.Text == "0")
-            {
-                if (A3.Text == "")
-                {
-                    return A3;
-                }
-                if (C3.Text == "")
-                {
-                    return C3;
-                }
-                if (C1.Text == "")
-                {
-                    return C1;
-                }
-            }
-            if (A3.Text == "0")
-            {
-                if (A1.Text == "")
-                {
-                    return A3;
-                }
-                if (C3.Text == "")
-                {
-                    return C3;
-                }
-                if (C1.Text == "")
-                {
-                    return C1;
-                }
-            }
-            if (C3.Text == "0")
-            {
-                if (A3.Text == "")
-                {
-                    return A3;
-                }
-                if (A1.Text == "")
-                {
-                    return C3;
-                }
-                if (C1.Text == "")
-                {
-                    return C1;
-                }
-            }
-            if (C1.Text == "0")
-            {
-                if (A3.Text == "")
-                {
-                    return A3;
-                }
-                if (C3.Text == "")
-                {
-                    return C3;
-                }
-                if (A1.Text == "")
-                {
-                    return A1;
-                }
-            }
-
             if (A3.Text == "")
             {
                 return A3;
