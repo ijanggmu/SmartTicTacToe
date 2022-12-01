@@ -6,11 +6,12 @@ namespace SmartTicTacToe
 {
     public partial class TicTacToeMainGameForm
     {
-        #region ToolBar
+        #region ToolBar 
         private void NewGameMenuClick(object sender, EventArgs e)
         {
             turn = true;
             turnCount = 0;
+            TurnLabel.Text = Player1;
             Human.Text = SystemConstant.DefaultScoreBoard;
             Computer.Text = SystemConstant.DefaultScoreBoard;
             Draw.Text = SystemConstant.DefaultScoreBoard;
