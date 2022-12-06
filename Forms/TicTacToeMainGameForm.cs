@@ -11,17 +11,20 @@ namespace SmartTicTacToe
     {
         private bool turn = true;
         private int turnCount = 0;
+        private int matchCount = 0;
         private static string Player1, Player2;
-        private static bool againstRandomBot;
-        private static bool againstGuidedbot;
+        public static bool againstRandomBot;
+        public static bool againstGuidedbot;
+        public static bool botFirst = false;
         private List<Button> emptyButton = new List<Button>();
         public Symbol CurrentPlayer { get; set; }
-
+        string xButton = nameof(Symbol.X);
+        string oButton = nameof(Symbol.O);
         public TicTacToeMainGameForm()
         {
             InitializeComponent();
-        }
 
+        }
 
         #region Bot
         private void TicTacToeRandomBot()
@@ -36,8 +39,15 @@ namespace SmartTicTacToe
         private void TicTacToeGuidedBot()
         {
             //MoveToWin//
-            Button move = bestMoveToWinOrBlock(nameof(Symbol.O)) ?? bestMoveToWinOrBlock(nameof(Symbol.X)) ?? moveForMiddle() ?? moveForCorners() ?? moveForOpenSpace();
-
+            Button move = new Button();
+            if(botFirst==true)
+            {
+                move = bestMoveToWinOrBlock(nameof(Symbol.X)) ?? bestMoveToWinOrBlock(nameof(Symbol.O)) ?? moveForMiddle() ?? moveForCorners() ?? moveForOpenSpace();
+            }
+            else
+            {
+                move = bestMoveToWinOrBlock(nameof(Symbol.O)) ?? bestMoveToWinOrBlock(nameof(Symbol.X)) ?? moveForMiddle() ?? moveForCorners() ?? moveForOpenSpace();
+            }
             if (move == null)
             {
                 return;
@@ -49,11 +59,16 @@ namespace SmartTicTacToe
 
         public static void SetPlayerName(string p1, string p2)
         {
+            againstRandomBot = false;
+            againstGuidedbot = false;
             Player1 = p1;
             Player2 = p2;
+
         }
         public static void SetOpponentChoice(string opponent)
         {
+            // Choose the oppenent which is clicked in the UI
+
             if (opponent == nameof(Bot.GuidedBot))
             {
                 againstGuidedbot = true;
@@ -63,10 +78,35 @@ namespace SmartTicTacToe
                 againstRandomBot = true;
             }
         }
+        public static void SetPlayerTwoFirst()
+        {
+            var temp = Player1;
+            Player1 = Player2;
+            Player2 = temp;
+        }
         private void TikTacToeLoad(object sender, EventArgs e)
         {
             label1.Text = Player1;
             label3.Text = Player2;
+            TurnLabel.Text = Player1;
+            if (Player2 == nameof(Bot.RandomBot) && botFirst)
+            {
+                matchCount = 1;
+                string temp = xButton;
+                xButton = oButton;
+                oButton = temp;
+                NewGameAfterMatchEnd();
+                TicTacToeRandomBot();
+            }
+            else if (Player2 == nameof(Bot.GuidedBot) && botFirst)
+            {
+                string temp = xButton;
+                xButton = oButton;
+                oButton = temp;
+                matchCount = 1;
+                NewGameAfterMatchEnd();
+                TicTacToeGuidedBot();
+            }
         }
 
         private void WinCheck()
@@ -114,13 +154,14 @@ namespace SmartTicTacToe
                 }
 
                 MessageBox.Show(SystemConstant.WinningMessage(winner));
+                matchCount += 1;
                 NewGameAfterMatchEnd();
                 return;
             }
 
             if (turnCount == 9)
             {
-                if(Int32.TryParse(Draw.Text,out int number))
+                if (Int32.TryParse(Draw.Text, out int number))
                 {
                     Draw.Text = (number + 1).ToString();
                 }
@@ -129,16 +170,27 @@ namespace SmartTicTacToe
                     Console.WriteLine(ErrorMessage.IntParseError);
                 }
                 MessageBox.Show(SystemConstant.DrawMessage);
+                matchCount += 1;
                 NewGameAfterMatchEnd();
             }
-
 
         }
 
         private void NewGameAfterMatchEnd()
         {
-            turn = true;
             turnCount = 0;
+
+            if (matchCount % 2 == 0)
+            {
+                turn = true;
+                TurnLabel.Text = Player1;
+            }
+            else
+            {
+                turn = false;
+                TurnLabel.Text = Player2;
+            }
+
             foreach (Control c in Controls)
             {
                 try
@@ -148,10 +200,10 @@ namespace SmartTicTacToe
                     b.Text = String.Empty;
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex);
-                 }
+                }
             }
 
 
@@ -160,9 +212,17 @@ namespace SmartTicTacToe
         private void ButtonClick(object sender, EventArgs e)
         {
 
-            Button button = (Button)sender;
-
-            button.Text = turn ? nameof(Symbol.X) : nameof(Symbol.O);
+            Button button = sender as Button;
+            if (turn)
+            {
+                button.Text = xButton;
+                TurnLabel.Text = Player2;
+            }
+            else
+            {
+                button.Text = oButton;
+                TurnLabel.Text = Player1;
+            }
 
             turn = !turn;
             button.Enabled = false;
@@ -185,9 +245,10 @@ namespace SmartTicTacToe
             }
         }
 
+        // when cursor hover inside the box 
         private void ButtonEnter(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            Button button = sender as Button;
 
             if (!button.Enabled)
             {
@@ -196,14 +257,15 @@ namespace SmartTicTacToe
 
             if (turn)
             {
-                button.Text = nameof(Symbol.X);
+                button.Text = xButton;
             }
             else
             {
-                button.Text = nameof(Symbol.O);
+                button.Text = oButton;
             }
         }
 
+        // when cursor hover outside the box 
         private void ButtonLeave(object sender, EventArgs e)
         {
             Button button = (Button)sender;
