@@ -15,7 +15,7 @@ namespace SmartTicTacToe
         private void TwoPlayerClick(object sender, EventArgs e)
         {
             // Object Initialize of PlayersNameForm Class and displayed it on Dialog 
-
+            //check
             PlayersNameForm playerName = new PlayersNameForm();
             playerName.ShowDialog();
         }
