@@ -50,6 +50,8 @@
             this.Human = new System.Windows.Forms.Label();
             this.Draw = new System.Windows.Forms.Label();
             this.Computer = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TurnLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             this.newGameMenu,
             this.resetScore,
             this.exitApplicationMenu});
-            this.tikTacToeToolStripMenuItem.Name = "ticTacToeToolStripMenuItem";
+            this.tikTacToeToolStripMenuItem.Name = "tikTacToeToolStripMenuItem";
             this.tikTacToeToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
             this.tikTacToeToolStripMenuItem.Text = "TicTacToe";
             // 
@@ -233,7 +235,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(86, 387);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 16);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 18;
             this.label1.Text = "Player1";
             // 
@@ -251,7 +253,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(313, 387);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 16);
+            this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 20;
             this.label3.Text = "Player2";
             // 
@@ -282,11 +284,32 @@
             this.Computer.TabIndex = 23;
             this.Computer.Text = "0";
             // 
-            // Form1
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(163, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 25);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Turn:";
+            // 
+            // TurnLabel
+            // 
+            this.TurnLabel.AutoSize = true;
+            this.TurnLabel.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TurnLabel.Location = new System.Drawing.Point(224, 51);
+            this.TurnLabel.Name = "TurnLabel";
+            this.TurnLabel.Size = new System.Drawing.Size(0, 19);
+            this.TurnLabel.TabIndex = 25;
+            // 
+            // TicTacToeMainGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 478);
+            this.Controls.Add(this.TurnLabel);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.Computer);
             this.Controls.Add(this.Draw);
             this.Controls.Add(this.Human);
@@ -305,9 +328,9 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "TicTacToeMainGameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TikTacToe";
+            this.Text = "TicTacToe";
             this.Load += new System.EventHandler(this.TikTacToeLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -340,6 +363,8 @@
         private System.Windows.Forms.Label Draw;
         private System.Windows.Forms.Label Computer;
         private System.Windows.Forms.ToolStripMenuItem resetScore;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label TurnLabel;
     }
 }
 

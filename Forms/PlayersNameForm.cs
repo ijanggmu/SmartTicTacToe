@@ -37,7 +37,6 @@ namespace SmartTicTacToe
             }
             PlayPlayerTwoFirst.Text = "Play Bot First";
 
-
         }
         private void PlayClick(object sender, EventArgs e)
         {
